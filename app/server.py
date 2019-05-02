@@ -12,10 +12,11 @@ from fastai.vision import *
 export_file_url = 'https://drive.google.com/uc?export=download&id=1QzLupiw53K7IRvy52QxwWs5Tnu5zmQUM'
 export_file_name = 'export.pkl'
 
-# classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
-classes = ["""Actinic keratoses and intraepithelial carcinoma / Bowen's disease""","""basal cell carcinoma """,
+classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
+full_classes = ["""Actinic keratoses and intraepithelial carcinoma / Bowen's disease""","""basal cell carcinoma """,
 """benign keratosis-like lesions (solar lentigines / seborrheic keratoses and lichen-planus like keratoses""",
 "dermatofibroma","melanoma","melanocytic nevi","and vascular lesions (angiomas, angiokeratomas, pyogenic granulomas and hemorrhage"]
+dict_ = {val:key for key,val zip(full_classes,classes)}
 path = Path(__file__).parent
 
 app = Starlette()
@@ -58,7 +59,7 @@ async def analyze(request):
     img_bytes = await (data['file'].read())
     img = open_image(BytesIO(img_bytes))
     prediction = learn.predict(img)[0]
-    return JSONResponse({'result': str(prediction)})
+    return JSONResponse({'result': dict_[str(prediction)]})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)
