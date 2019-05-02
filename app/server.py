@@ -13,9 +13,9 @@ export_file_url = 'https://drive.google.com/uc?export=download&id=1QzLupiw53K7IR
 export_file_name = 'export.pkl'
 
 classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
-full_classes = ["""Actinic keratoses and intraepithelial carcinoma / Bowen's disease""","""basal cell carcinoma """,
-"""benign keratosis-like lesions (solar lentigines / seborrheic keratoses and lichen-planus like keratoses""",
-"dermatofibroma","melanoma","melanocytic nevi","and vascular lesions (angiomas, angiokeratomas, pyogenic granulomas and hemorrhage"]
+full_classes = ["""Actinic keratoses and intraepithelial carcinoma / Bowen's disease""","""Basal cell carcinoma """,
+"""Benign keratosis-like lesions (solar lentigines / seborrheic keratoses and lichen-planus like keratoses""",
+"Dermatofibroma","Melanoma","Melanocytic Nevi","Vascular lesions (angiomas, angiokeratomas, pyogenic granulomas and hemorrhage)"]
 dict_ = {val:key for key,val in zip(full_classes,classes)}
 path = Path(__file__).parent
 
