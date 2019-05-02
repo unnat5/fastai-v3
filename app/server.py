@@ -12,7 +12,10 @@ from fastai.vision import *
 export_file_url = 'https://drive.google.com/uc?export=download&id=1QzLupiw53K7IRvy52QxwWs5Tnu5zmQUM'
 export_file_name = 'export.pkl'
 
-classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
+# classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
+classes = ["""Actinic keratoses and intraepithelial carcinoma / Bowen's disease""","""basal cell carcinoma """,
+"""benign keratosis-like lesions (solar lentigines / seborrheic keratoses and lichen-planus like keratoses""",
+"dermatofibroma","melanoma","melanocytic nevi","and vascular lesions (angiomas, angiokeratomas, pyogenic granulomas and hemorrhage"]
 path = Path(__file__).parent
 
 app = Starlette()
