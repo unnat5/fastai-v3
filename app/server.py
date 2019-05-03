@@ -59,13 +59,12 @@ async def analyze(request):
     data = await request.form()
     img_bytes = await (data['file'].read())
     img = open_image(BytesIO(img_bytes))
-    losses = img.predict(learn)
-    # prediction = learn.predict(img)
+    prediction = learn.predict(img)
     # pred = re.findall('(.*?);',str(prediction)+';')
     # print(prediction)
     # pred = prediction[0].obj[-1]
     return JSONResponse({'result':  sorted(
-            zip(learn.data.classes, map(float, losses)),
+            zip(learn.data.classes, map(float, prediction[1])),
             key=lambda p: p[1],
             reverse=True
         )})
