@@ -64,8 +64,8 @@ async def analyze(request):
     # print(prediction)
     # pred = prediction[0].obj[-1]
     out = sorted(zip(learn.data.classes, map(float, prediction[1])),key=lambda p: p[1],reverse=True)
-    out = [dict_[i[0]] for i in sorted(zip(learn.data.classes, map(float, out[1])),key=lambda p: p[1],reverse=True) if i[1] == 1.0]
-    return JSONResponse({'result': (out[0], dict_[str(out[0][0])])})
+    out_ = [dict_[i[0]] for i in sorted(zip(learn.data.classes, map(float, out[1])),key=lambda p: p[1],reverse=True) if i[1] == 1.0]
+    return JSONResponse({'result': (out_)})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)
