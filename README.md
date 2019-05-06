@@ -1,7 +1,7 @@
-# Starter for deploying [fast.ai](https://www.fast.ai) models on [Render](https://render.com)
+# Skin Cancer Image Classifier
+My first attempt at a machine learning API, using a pre-calculated model trained using [HAM10000](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DBW86T) data
 
-This repo can be used as a starting point to deploy [fast.ai](https://github.com/fastai/fastai) models on Render.
+server.py is a very tiny [Starlette API](https://www.starlette.io/) server which simply accepts file image uploads and runs them against the pre-calculated model.
 
-The sample app described here is up at https://fastai-v3.onrender.com. Test it out with bear images!
-
-The guide for production deployment to Render is at https://course.fast.ai/deployment_render.html.
+Go to this url and classify the images.
+https://skincancer-59r3.onrender.com/
