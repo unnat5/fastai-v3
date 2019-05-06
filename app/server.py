@@ -15,7 +15,7 @@ export_file_name = 'export.pkl'
 
 classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
 full_classes = ["""Actinic keratoses and intraepithelial carcinoma / Bowen's disease""","""Basal cell carcinoma """,
-"""Benign keratosis-like lesions (solar lentigines / seborrheic keratoses and lichen-planus like keratoses""",
+"""Benign keratosis-like lesions (solar lentigines / seborrheic keratoses and lichen-planus like keratoses)""",
 "Dermatofibroma","Melanoma","Melanocytic Nevi","Vascular lesions (angiomas, angiokeratomas, pyogenic granulomas and hemorrhage)"]
 dict_ = {val:key for key,val in zip(full_classes,classes)}
 path = Path(__file__).parent
@@ -65,7 +65,7 @@ async def analyze(request):
     # pred = prediction[0].obj[-1]
     out = sorted(zip(learn.data.classes, map(float, prediction[1])),key=lambda p: p[1],reverse=True)
     out_ = [dict_[i[0]] for i in out if i[1] == 1.0]
-    return JSONResponse({'result': (out_)})
+    return JSONResponse({'result': (out_) })
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)
