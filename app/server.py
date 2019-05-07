@@ -69,8 +69,9 @@ async def analyze(request):
     for i in out:
     	if i[1] == 1.0 and i[0] in dict_:
     		out_.append(dict_[i[0]])
+    	out_.append('bcc')
 
-    return JSONResponse({'result': str(out_[0]) })
+    return JSONResponse({'result': out_ })
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)
