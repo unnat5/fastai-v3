@@ -59,19 +59,21 @@ async def analyze(request):
     data = await request.form()
     img_bytes = await (data['file'].read())
     img = open_image(BytesIO(img_bytes))
-    prediction = learn.predict(img)
+    # prediction = learn.predict(img)
     # pred = re.findall('(.*?);',str(prediction)+';')
     # print(prediction)
     # pred = prediction[0].obj[-1]
-    out = sorted(zip(learn.data.classes, map(float, prediction[1])),key=lambda p: p[1],reverse=True)
-    # out_ = [dict_[i[0]] for i in out if i[1] == 1.0]
-    out_ = []
-    for i in out:
-    	if i[1] == 1.0 and i[0] in dict_:
-    		out_.append(dict_[i[0]])
-    	out_.append('bcc')
+    prediction = learn.predict(img)[0]
+    return JSONResponse({'result': str(prediction)})
+    # out = sorted(zip(learn.data.classes, map(float, prediction[1])),key=lambda p: p[1],reverse=True)
+    # # out_ = [dict_[i[0]] for i in out if i[1] == 1.0]
+    # out_ = []
+    # for i in out:
+    # 	if i[1] == 1.0 and i[0] in dict_:
+    # 		out_.append(dict_[i[0]])
+    # 	out_.append('bcc')
 
-    return JSONResponse({'result': out_ })
+    # return JSONResponse({'result': out_ })
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)
