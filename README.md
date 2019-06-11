@@ -5,3 +5,4 @@ server.py is a very tiny [Starlette API](https://www.starlette.io/) server which
 
 Go to this url and classify the images.
 https://skincancer-59r3.onrender.com/
+
